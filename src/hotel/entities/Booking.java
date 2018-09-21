@@ -138,7 +138,13 @@ public class Booking {
 
 
 	public void addServiceCharge(ServiceType serviceType, double cost) {
-		// TODO Auto-generated method stub
+		// if booking status is not in CHECKED IN , system will occur a run time
+		// exception
+		if (!isCheckedIn())
+			throw new RuntimeException("Booking state is not in CHECKED IN  ");
+		// create new service charge instance and add that into charges list.
+		ServiceCharge serviceCharge = new ServiceCharge(serviceType, cost);
+		this.charges.add(serviceCharge);
 	}
 
 

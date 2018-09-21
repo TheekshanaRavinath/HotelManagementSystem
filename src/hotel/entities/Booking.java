@@ -143,7 +143,12 @@ public class Booking {
 
 
 	public void checkOut() {
-		// TODO Auto-generated method stub
+		// if booking status is not in CHECKED IN , system will occur a run time
+		// exception
+		if (!isCheckedIn())
+			throw new RuntimeException("Booking state is not in CHECKED IN  ");
+		this.room.checkout(this);
+		this.state = State.CHECKED_OUT;
 	}
 
 }

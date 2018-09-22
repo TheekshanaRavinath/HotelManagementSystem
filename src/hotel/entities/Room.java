@@ -61,7 +61,10 @@ public class Room {
 
 	public Booking book(Guest guest, Date arrivalDate, int stayLength, int numberOfOccupants, CreditCard creditCard) {
 		// TODO Auto-generated method stub
-		return null;		
+		// check the availability of booking system
+		if (!isAvailable(arrivalDate, stayLength)) {
+			throw new RuntimeException("Booking is not available!");
+		}	
 	}
 
 

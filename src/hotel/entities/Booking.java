@@ -137,6 +137,8 @@ public class Booking {
 		if (!isPending()) {
 			throw new RuntimeException("Booking state is not in Pending !");
 		}
+		this.room.checkin();
+		this.state = State.CHECKED_IN;
 	}
 
 

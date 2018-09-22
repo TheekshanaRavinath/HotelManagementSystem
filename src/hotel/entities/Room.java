@@ -64,7 +64,11 @@ public class Room {
 		// check the availability of booking system
 		if (!isAvailable(arrivalDate, stayLength)) {
 			throw new RuntimeException("Booking is not available!");
-		}	
+		}
+		// create booking by making booking status as "PENDING"
+		Booking booking = new Booking(guest, this, arrivalDate, stayLength, numberOfOccupants, creditCard);
+		this.bookings.add(booking);
+		return booking;
 	}
 
 

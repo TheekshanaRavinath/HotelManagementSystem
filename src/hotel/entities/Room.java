@@ -84,7 +84,11 @@ public class Room {
 
 	public void checkout(Booking booking) {
 		// TODO Auto-generated method stub
+		if (this.state != State.OCCUPIED)
+			throw new RuntimeException("The Room is not OCCUPIED");
+		// remove the booking from the booking list
+		this.bookings.remove(booking);
+		this.state = State.READY;
 	}
-
 
 }

@@ -133,7 +133,13 @@ public class Booking {
 
 
 	public void checkIn() {
-		// TODO Auto-generated method stub
+			// on the off chance that booking status isn't in PENDING, system will happen a run time exception
+		if (!isPending()) {
+			throw new RuntimeException("Booking state isn't in Pending!");
+		}
+		
+
+	
 	}
 
 

@@ -77,7 +77,7 @@ public class IOUtils {
 	
 	
 	public static Date getValidDate(String prompt) {		
-		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy"); //date format was not in correct format and modified
 		Date date = null;
 
 		IOUtils.outputln(prompt);		

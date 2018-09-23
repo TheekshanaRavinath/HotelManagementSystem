@@ -96,7 +96,16 @@ public class Hotel {
 
 	
 	public void checkin(long confirmationNumber) {
-		// TODO Auto-generated method stub
+
+    // this method implement in order to checking, is there active booking , that associate to confirmation Number
+        Booking booking = findBookingByConfirmationNumber(confirmationNumber);
+        if (booking == null) {
+            throw new RuntimeException("No Active booking for confirmation number : " + confirmationNumber);
+        }
+
+        int roomId = booking.getRoomId();
+        booking.checkIn();
+        this.activeBookingsByRoomId.put(new Integer(roomId), booking);
 	}
 
 

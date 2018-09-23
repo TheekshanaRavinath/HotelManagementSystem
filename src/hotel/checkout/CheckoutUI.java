@@ -75,7 +75,7 @@ public class CheckoutUI {
 		CreditCardType creditCardType = null;
 		int cardNumber = 0;
 		int ccv = 0;
-		IOUtils.outputln("\nEnter credit card details");
+		IOUtils.outputln("Enter credit card details");
 		
 		boolean completed = false;
 		while (!completed) {			
@@ -105,7 +105,7 @@ public class CheckoutUI {
 			}	
 			completed = true;
 		}		
-		CreditDetails creditDetails = new CreditDetails(creditCardType, cardNumber, ccv);
+		CreditDetails creditDetails = new CreditDetails(creditCardType,cardNumber,ccv);
 		return creditDetails;
 	}
 

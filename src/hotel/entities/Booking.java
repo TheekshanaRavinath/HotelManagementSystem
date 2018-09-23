@@ -137,19 +137,25 @@ public class Booking {
 		if (!isPending()) {
 			throw new RuntimeException("Booking state isn't in Pending!");
 		}
-		
-
-	
+		this.room.checkin();
+		this.state = State.CHECKED_IN;
 	}
 
-
 	public void addServiceCharge(ServiceType serviceType, double cost) {
-		// TODO Auto-generated method stub
+		// on the off chance that booking status isn't in CHECKED IN, system will happen a run time exception
+		if (!isCheckedIn())
+			throw new RuntimeException("Booking state isn't in CHECKED IN  ");
+		ServiceCharge serviceCharge = new ServiceCharge(serviceType, cost);
+		this.charges.add(serviceCharge);
 	}
 
 
 	public void checkOut() {
-		// TODO Auto-generated method stub
+		// on the off chance that booking status isn't in CHECKED IN, system will happen a run time exception
+		if (!isCheckedIn())
+			throw new RuntimeException("Booking state isn't  in CHECKED IN  ");
+		this.room.checkout(this);
+		this.state = State.CHECKED_OUT;
 	}
 
 }

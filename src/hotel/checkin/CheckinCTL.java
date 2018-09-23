@@ -80,7 +80,17 @@ public class CheckinCTL {
 
 	
 	public void checkInConfirmed(boolean confirmed) {
-		// TODO Auto-generated method stub
+		// check whether , if state of controller is not CONFIRMING , throw a runtime
+        // exception
+        if (this.state != State.CONFIRMING)
+            throw new RuntimeException("Control state is not in CONFIRMING !");
+
+        if (confirmed) {
+            this.hotel.checkin(confirmationNumber);
+            checkInUI.displayMessage("Checkin is confirmed by referencing : confirmation number :"+confirmationNumber);
+            this.state = State.COMPLETED;
+            checkInUI.setState(CheckinUI.State.COMPLETED);
+        }
 	}
 
 

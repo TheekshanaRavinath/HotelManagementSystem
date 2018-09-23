@@ -98,7 +98,21 @@ public class CheckoutCTL {
 
 	
 	public void creditDetailsEntered(CreditCardType type, int number, int ccv) {
-		// TODO Auto-generated method stub
+	// on the off chance that controller status isn't in CREDIT, system will happen a run time exception
+		if (state != State.CREDIT) {
+			throw new RuntimeException("Controll state isn't in CREDIT state !");
+		}
+
+		
+
+		if (isAutherized) {
+			this.hotel.checkout(roomId);
+			this.checkoutUI.displayMessage("Total amount AU" + total + " has been debited from your credit card");
+			this.state = State.COMPLETED;
+			this.checkoutUI.setState(CheckoutUI.State.COMPLETED);
+		} else {
+			this.checkoutUI.displayMessage("Credit card isn't approved !");
+		}
 	}
 
 

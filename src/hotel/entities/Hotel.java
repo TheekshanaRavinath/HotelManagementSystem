@@ -120,7 +120,16 @@ public class Hotel {
 
 	
 	public void checkout(int roomId) {
-		// TODO Auto-generated method stub
+    
+		// checkinh whether is there active booking , that associate to roomId
+        Booking booking = findActiveBookingByRoomId(roomId);
+        if (booking == null) {
+            throw new RuntimeException("No Active booking for room id : " + roomId);
+        }
+
+        booking.checkOut();
+        // remove the booking instance from active bookings map
+        this.activeBookingsByRoomId.remove(new Integer(roomId));
 	}
 
 

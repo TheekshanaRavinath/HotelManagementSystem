@@ -50,6 +50,19 @@ public class RecordServiceCTL {
 	
 	public void serviceDetailsEntered(ServiceType serviceType, double cost) {
 		// TODO Auto-generated method stub
+		// add charges for the service
+               	if(this.state != State.SERVICE){
+                    
+		throw new RuntimeException("Record Service state is not in SERVICE!");
+                
+		}
+ 
+		hotel.addServiceCharge(roomNumber, serviceType, cost);
+                
+		state = State.COMPLETED;
+                
+		recordServiceUI.setState(RecordServiceUI.State.COMPLETED);
+
 	}
 
 

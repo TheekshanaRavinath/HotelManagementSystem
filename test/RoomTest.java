@@ -21,7 +21,7 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author Ravi
+ * @author Isurika
  */
 public class RoomTest {
     Guest guest;
